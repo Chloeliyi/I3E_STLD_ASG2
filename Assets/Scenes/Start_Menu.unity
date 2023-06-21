@@ -478,7 +478,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2146657171}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnNoButton
         m_Mode: 1
         m_Arguments:
@@ -942,7 +942,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 731163590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2146657171}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnOptionButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &731163590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1391,7 +1403,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2146657171}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnYesButton
         m_Mode: 1
         m_Arguments:
@@ -1736,7 +1748,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2146657171}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnStartButton
         m_Mode: 1
         m_Arguments:
@@ -2120,7 +2132,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2146657171}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnQuitButton
         m_Mode: 1
         m_Arguments:
@@ -2814,9 +2826,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2146657166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 012fba215fbb96e42bb69fce8d8f373d, type: 3}
+  m_Script: {fileID: 11500000, guid: f57394b5995f04340aca08f254f32235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Level1: 0
-  Mainmenu: 0
+  Level2: 1
+  Player: {fileID: 0}
+  Mainmenu: 2
   Quitmenu: {fileID: 616736355}
+  Deathmenu: 3
+  Optionmenu: 4
+  HealthBar: 30
