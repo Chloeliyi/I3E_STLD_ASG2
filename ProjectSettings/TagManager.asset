@@ -9,6 +9,13 @@ TagManager:
   - exit
   - entrance
   - Enemy
+  - collectible_1
+  - collectible_2
+  - collectible_3
+  - Cactus
+  - house
+  - floor
+  - test
   layers:
   - Default
   - TransparentFX

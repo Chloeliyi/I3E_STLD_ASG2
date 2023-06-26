@@ -3,7 +3,15 @@ guid: f57394b5995f04340aca08f254f32235
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Quitmenu: {instanceID: 0}
+  - displayHealth: {instanceID: 0}
+  - SoundSlider: {instanceID: 0}
+  - Sound: {instanceID: 0}
+  - playerPrefab: {fileID: 3479100984959876383, guid: cd9bfa04ea17b634b83405208b4817d7,
+      type: 3}
+  - playerEnemy: {fileID: 4611023137199742480, guid: 28c3e14e22d97544385f2c056ab42300,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
