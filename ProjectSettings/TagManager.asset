@@ -14,8 +14,14 @@ TagManager:
   - collectible_3
   - Cactus
   - house
-  - floor
   - test
+  - InteractiveObject
+  - teleporter
+  - teleporterInput
+  - houseTeleporter
+  - ground
+  - projectile
+  - gun
   layers:
   - Default
   - TransparentFX
@@ -23,9 +29,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - WhatIsGround
+  - WhatIsPlayer
+  - Interact
   - 
   - 
   - 
