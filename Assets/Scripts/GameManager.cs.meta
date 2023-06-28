@@ -4,11 +4,13 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - Quitmenu: {instanceID: 0}
-  - displayHealth: {instanceID: 0}
+  - Quitmenu: {fileID: 5047351568407675209, guid: 51409f5c4ff5a0442877dbb91b0cd8d8,
+      type: 3}
+  - displayHealth: {fileID: 174166666622246332, guid: 9ecc71f57995ede42991c8a3f95dde49,
+      type: 3}
   - SoundSlider: {instanceID: 0}
   - Sound: {instanceID: 0}
-  - playerPrefab: {fileID: 3479100984959876383, guid: cd9bfa04ea17b634b83405208b4817d7,
+  - playerPrefab: {fileID: 1045996508350470242, guid: cd9bfa04ea17b634b83405208b4817d7,
       type: 3}
   - playerEnemy: {fileID: 4611023137199742480, guid: 28c3e14e22d97544385f2c056ab42300,
       type: 3}
