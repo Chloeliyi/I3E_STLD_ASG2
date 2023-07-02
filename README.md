@@ -1,5 +1,5 @@
 # Crash-Landed
-Crash-Landed is an immersive PC game set in space where you as the player lands on an unknown planet and have to find a way off it by exploring the area, finding andr restoring the missing core reactor to repair your spaceship and get back home. Prepare to face off against aliens and overcome puzzles as you make your way through three different levels, the spaceship, the oasis and the underground library
+Crash-Landed is an immersive PC game set in space where you as the player lands on an unknown planet and have to find a way off it by exploring the area, finding and restoring the missing core reactor to repair your spaceship and get back home. Prepare to face off against aliens and overcome puzzles as you make your way through three different levels, the spaceship, the oasis and the underground library.
 # Features
 - **Captivating Storyline: Experience a gripping narrative as you unravel the mysteries of the unknown planet and strive to return home.
 - **Immersive Gameplay: Dive into a rich and immersive space environment, complete with stunning visuals and atmospheric sound effects.
