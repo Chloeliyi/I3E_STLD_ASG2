@@ -6,8 +6,10 @@ Crash-Landed is an immersive PC game set in space where you as the player lands 
 - **Exploration: Traverse diverse landscapes, from the wreckage of your spaceship to ancient underground structures, as you search for clues and resources.
 - **Encounters and Challenges: Encounter intriguing alien species and overcome obstacles that stand in your way.
 # Screenshots
-![Screenshot 1](![Level1](https://github.com/Chloeliyi/I3E_STLD_ASG2/assets/116060942/94b7f53c-e912-4856-a37e-c89e663ed5cd)
-)
+![Screenshot 1](Assets/Screenshots/Screenshot_1.png)
+![Screenshot 2](Assets/Screenshots/Screenshot_2.png)
+![Screenshot 3](Assets/Screenshots/Screenshot_3.png)
+![Screenshot 3](Assets/Screenshots/Screenshot_4.png)
 # Controls
 - **Movement: W, A, S, D
 - **Jump: Spacebar
