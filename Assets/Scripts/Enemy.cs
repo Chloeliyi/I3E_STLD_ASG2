@@ -17,27 +17,48 @@ namespace KeySystem
         public float Enemyhealth = 30;
         public float Playerattack = 3;
 
+        //private PlayerMovement Playerhealth;
 
-        //Patroling
+        /// <summary>
+        /// Patroling
+        /// </summary>
         public Vector3 walkPoint;
         bool walkPointSet;
         public float walkPointRange;
 
-        //Attacking
+        /// <summary>
+        /// Attacking
+        /// </summary>
         public float timeBetweenAttacks;
         bool alreadyAttacked;
 
-        //States
-        public float sightRange, attackRange;
+        /// <summary>
+        /// States
+        /// </summary>
+        public float sightRange = 20, attackRange = 12;
         public bool playerInSightRange, playerInAttackRange;
+
+        /// <summary>
+        /// Get sound of projectile
+        /// </summary>
+        SoundManager soundManager;
+        /// <summary>
+        /// Awake function
+        /// </summary>
         private void Awake()
         {
-            player = GameObject.Find("FirstPerson-AIO").transform;
+            //player = GameObject.Find("FirstPerson-AIO").transform;
+            //player = GameObject.Find("FirstPerson-AIO(Clone)").transform;
             agent = GetComponent<NavMeshAgent>();
+            soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundManager>();
         }
 
+        /// <summary>
+        /// Update function
+        /// </summary>
         private void Update()
         {
+            player = GameObject.FindObjectOfType<PlayerMovement>().transform;
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -46,6 +67,9 @@ namespace KeySystem
             if (playerInSightRange && playerInAttackRange) AttackPlayer();
         }
 
+        /// <summary>
+        /// Patroling function
+        /// </summary>
         private void Patroling()
         {
             if (!walkPointSet) SearchWalkPoint();
@@ -79,14 +103,34 @@ namespace KeySystem
 
             agent.SetDestination(transform.position);
             transform.LookAt(player);
+            
+            /*if (Playerhealth.currentHealth > 0 )
+            {
+                if (!alreadyAttacked)
+                {
 
+                    //Attack code here
+                    Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                    soundManager.PLaySFX(soundManager.Cannonsound);
+                    rb.AddForce(transform.forward * 12f, ForceMode.Impulse);
+                    rb.AddForce(transform.up * 3f, ForceMode.Impulse);
+
+                    alreadyAttacked = true;
+                    Invoke(nameof(ResetAttack), timeBetweenAttacks);
+                }
+            }
+            else
+            {
+                alreadyAttacked = true;
+            }*/
             if (!alreadyAttacked)
             {
 
                 //Attack code here
                 Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-                rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-                rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+                soundManager.PLaySFX(soundManager.Cannonsound);
+                rb.AddForce(transform.forward * 15f, ForceMode.Impulse);
+                rb.AddForce(transform.up * 5f, ForceMode.Impulse);
 
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -128,95 +172,6 @@ namespace KeySystem
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, sightRange);
         }
-
-        /*public Transform visionPoint;
-        private PlayerMovement player;
-
-        public GameObject PlayerEnemy;
-
-        public Transform Player;
-
-        // set the vision and movement speed of the enemy
-        public float visionAngle = 30f;
-        public float visionDistance = 10f;
-        public float moveSpeed = 2f;
-        public float chaseDistance = 3f;
-
-        private Vector3? lastKnownPlayerPosition;
-
-        // set health of enemy
-        public float EnemyHealth = 5;
-        public float PlayerAttack = 3;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            player = GameObject.FindAnyObjectByType<PlayerMovement>();
-        }
-
-        private void Awake()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            Vector3 lookAt = Player.position;
-            lookAt.y = transform.position.y;
-            transform.LookAt(lookAt); // allows enemy to rotate and face player
-
-            //Let the enemy move towards the player
-            PlayerEnemy.transform.position = Vector3.MoveTowards(transform.position, Player.position, moveSpeed * Time.deltaTime);
-        }
-
-        void Look()
-        {
-            Vector3 deltaToPlayer = player.transform.position - visionPoint.position;
-            Vector3 directionToPlayer = deltaToPlayer.normalized;
-
-            float dot = Vector3.Dot(transform.forward, directionToPlayer);
-
-            if (dot < 0)
-            {
-                return;
-            }
-
-            float distanceToPlayer = directionToPlayer.magnitude;
-
-            if (distanceToPlayer > visionDistance)
-            {
-                return;
-            }
-
-            float angle = Vector3.Angle(transform.forward, directionToPlayer);
-
-            if(angle >visionAngle)
-            {
-                return;
-            }
-
-            RaycastHit hitInfo;
-            if (Physics.Raycast(transform.position, directionToPlayer, out hitInfo, visionDistance))
-            {
-                if (hitInfo.collider.gameObject == player.gameObject)
-                {
-                    lastKnownPlayerPosition = player.transform.position;
-                }
-            }
-        }
-
-        public void Hurt()
-            // enemy is hurt when this function is called
-        {
-            EnemyHealth -= PlayerAttack;
-            Debug.Log("Enemy Health : " + EnemyHealth);
-
-            if (EnemyHealth <= 0)
-            {
-                Destroy(this.gameObject);
-            }
-        }*/
 
     }
 }
