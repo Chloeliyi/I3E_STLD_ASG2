@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class to check if object has been picked up and references other scripts to do the specific action
+/// </summary>
 namespace KeySystem
 {
     public class KeyItemController : MonoBehaviour
@@ -9,8 +12,11 @@ namespace KeySystem
         [SerializeField] private bool RedDoor = false;
         [SerializeField] private bool RedKey = false;
 
+        [SerializeField] private bool RightDoor = false;
+
         [SerializeField] private bool BlueKey = false;
         [SerializeField] private bool Teleporter = false;
+        [SerializeField] private bool SecondTeleporter = false;
         [SerializeField] private bool ThirdKey = false;
 
         [SerializeField] public bool Collectable_1 = false;
@@ -32,8 +38,6 @@ namespace KeySystem
 
         private GunController gunDamage;
 
-        //private Teleportion Levelteleportion;
-
         private void Start()
         {
             if (RedDoor)
@@ -41,7 +45,17 @@ namespace KeySystem
                 doorObject = GetComponent<KeyDoorController>();
             }
 
+            if (RightDoor)
+            {
+                doorObject = GetComponent<KeyDoorController>();
+            }
+
             if (Teleporter)
+            {
+                teleportObject = GetComponent<KeyTeleportController>();
+            }
+
+            if (SecondTeleporter)
             {
                 teleportObject = GetComponent<KeyTeleportController>();
             }
@@ -55,13 +69,6 @@ namespace KeySystem
             {
                 gunDamage = GetComponent<GunController>();
             }
-
-            //enemy = GetComponent<GameManager>();
-
-            /*if (Exit)
-            {
-                Levelteleportion = GetComponent<Teleportion>();
-            }*/
         }
 
         public void ObjectInteraction()
@@ -71,10 +78,18 @@ namespace KeySystem
                 doorObject.PlayAnimation();
             }
 
+            if (RightDoor)
+            {
+                doorObject.RightDoorLocked();
+            }
             else if (Teleporter)
             {
                 //Debug.Log("Teleport Is Open");
                 teleportObject.ShowTeleportUI();
+            }
+            else if (SecondTeleporter)
+            {
+                teleportObject.ShowSecondTeleportUI();
             }
 
             else if (Reactor)
@@ -86,11 +101,6 @@ namespace KeySystem
             {
                 gunDamage.DamageEnemy();
             }
-
-            /*else if (Exit)
-            {
-                Levelteleportion.GoToLevel();
-            }*/
             
             else if (RedKey)
             {
@@ -117,24 +127,25 @@ namespace KeySystem
             else if (Collectable_1)
             {
                 _keyInventory.isCollectable_1 = true;
-                Debug.Log("Collectable_1");
                 gameObject.SetActive(false);
 
-                //enemy.SpawnEnemy();
+                Debug.Log("Colllectable_1" + _keyInventory.isCollectable_1);
 
             }
             else if (Collectable_2)
             {
                 _keyInventory.isCollectable_2 = true;
-                Debug.Log("Collectable_2");
                 gameObject.SetActive(false);
+
+                Debug.Log("Collectable_2" + _keyInventory.isCollectable_2);
             }
 
             else if (Gun)
             {
                 _keyInventory.hasGun = true;
-                Debug.Log("Gun");
+                Debug.Log("Gun is " + _keyInventory.hasGun);
                 gameObject.SetActive(false);
+
             }
         }
     }
