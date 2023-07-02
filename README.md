@@ -26,9 +26,16 @@ To win the game and successfully return home, you must:
 # Credits
 ### Enemy codes:
 - [From Dave/GameDevelopment on YouTube](https://youtu.be/UjkSFoLxesw)
-- ### Audio Mixers/Sliders:
+### Audio Mixers/Sliders:
 - [From Rehope Games on Youtube](https://www.youtube.com/playlist?list=PLf6aEENFZ4Fv0ifncKE3T05qrI450U_aD) Videos 16, 17, 18 and 20
-- ### Health bar codes and fade transition: 
+### Health bar codes and fade transition: 
 - Brackeys on YouTube
  - [Health Bar](https://www.youtube.com/watch?v=BLfNP4Sc_iA)
  - [Transition](https://youtu.be/CE9VOZivb3I)
+### Models (from Unity Asset Store):
+
+### Audio (from Unity Asset Store):
+
+### Textures:
+- [A dog’s life software (Outdoor Ground Textures)](https://assetstore.unity.com/packages/2d/textures-materials/floors/outdoor-ground-textures-12555)
+- [Spaceship (Polyhaven](https://polyhaven.com/textures)
