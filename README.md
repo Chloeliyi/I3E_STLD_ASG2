@@ -41,9 +41,9 @@ To win the game and successfully return home, you must:
 - [Sci Fi Gun](https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-162872)
 - [Books](https://assetstore.unity.com/packages/3d/props/interior/books-3356)
 ### Audio (from Unity Asset Store):
--[Shooting Sound](https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096)
--[FREE Instrumental Music - "Space Puzzle"](https://assetstore.unity.com/packages/audio/music/free-instrumental-music-space-puzzle-2535260)
--[Footsteps - Essentials](https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879)
+- [Shooting Sound](https://assetstore.unity.com/packages/audio/sound-fx/shooting-sound-177096)
+- [FREE Instrumental Music - "Space Puzzle"](https://assetstore.unity.com/packages/audio/music/free-instrumental-music-space-puzzle-2535260)
+- [Footsteps - Essentials](https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879)
 ### Textures:
 - [A dog’s life software (Outdoor Ground Textures)](https://assetstore.unity.com/packages/2d/textures-materials/floors/outdoor-ground-textures-12555)
 - [Spaceship (Polyhaven](https://polyhaven.com/textures)
