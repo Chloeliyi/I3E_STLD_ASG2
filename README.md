@@ -27,4 +27,8 @@ To win the game and successfully return home, you must:
 ### Enemy codes:
 - [From Dave/GameDevelopment on YouTube](https://youtu.be/UjkSFoLxesw)
 - ### Audio Mixers/Sliders:
-- [From Rehope Games on Youtube](https://www.youtube.com/playlist?list=PLf6aEENFZ4Fv0ifncKE3T05qrI450U_aD)
+- [From Rehope Games on Youtube](https://www.youtube.com/playlist?list=PLf6aEENFZ4Fv0ifncKE3T05qrI450U_aD) Videos 16, 17, 18 and 20
+- ### Health bar codes and fade transition: 
+- Brackeys on YouTube
+ - [Health Bar](https://www.youtube.com/watch?v=BLfNP4Sc_iA)
+ - [Transition](https://youtu.be/CE9VOZivb3I)
