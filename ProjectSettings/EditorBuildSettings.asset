@@ -5,25 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/HowToPlay_Menu.unity
+    guid: 9091977a03312e04cbf092b97fdb1652
+  - enabled: 0
     path: Assets/Scenes/Death_Menu.unity
     guid: 3f77d6faf8ea59f48bf0efd1cfb191e6
   - enabled: 1
-    path: Assets/Scenes/Option_Menu.unity
-    guid: bcfa8690f49d80c4c942d4189dd7504e
+    path: Assets/Scenes/StartMenu.unity
+    guid: 74db8af42d06e434db1dd066f70e250e
   - enabled: 1
-    path: Assets/Scenes/Start_Menu.unity
-    guid: c9e18caf00fb59a48b2fe74a0a4db59e
+    path: Assets/Scenes/Level1.unity
+    guid: 26d6b2f0cdc9f5141aaadb8e60bd11e2
   - enabled: 1
-    path: Assets/Scenes/Level_1.unity
-    guid: 7be00c40f8da3f34ca532f8961799b45
+    path: Assets/Scenes/Level2.unity
+    guid: 42e805422d753c74ea8e033d04e625f7
   - enabled: 1
-    path: Assets/Scenes/Level_2.unity
-    guid: de79fc7379fbad8428dc2412e94243e7
-  - enabled: 1
-    path: Assets/Scenes/Level_3.unity
-    guid: 5a5a3bc62b3c7634e9bad7e309be27e2
-  - enabled: 1
-    path: Assets/Scenes/testing.unity
-    guid: de3b0948be545b845ab714bf4098a91c
+    path: Assets/Scenes/Level3.unity
+    guid: 4da071f6c21a84547b8bcaf2fec7ea3c
   m_configObjects: {}
