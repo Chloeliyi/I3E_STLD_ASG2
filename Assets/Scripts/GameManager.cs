@@ -3,315 +3,191 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using TMPro;
 
 namespace KeySystem
 {
     public class GameManager : MonoBehaviour
     {
-        public int Level1 = 3;
-        public int Level2 = 4;
-        public int Level3 = 5;
 
-        public int Mainmenu = 2;
-        public GameObject Quitmenu;
-        public int Deathmenu = 0;
-        public int Optionmenu = 1;
-
-        //public GameObject Dialogue;
-        public int CactusDamage = 3;
-
-        int HealthBar = 30;
-        public TextMeshProUGUI displayHealth;
-
-        public Slider SoundSlider;
-        public TextMeshProUGUI Sound;
-
-        public GameObject playerPrefab;
-        private GameObject activePlayer;
+        /// <summary>
+        ///  Gameobject of player
+        /// </summary>
+        public GameObject PlayerPrefab;
+        /// <summary>
+        /// This refernces the playermovement script
+        /// </summary>
+        private PlayerMovement activePlayer;
+        /// <summary>
+        /// Set static instance for gamemanger
+        /// </summary>
         public static GameManager instance;
+        /// <summary>
+        /// Gameobject of the quit menu
+        /// </summary>
+        public GameObject QuitMenu;
+        /// <summary>
+        /// Gameobject of the main menu
+        /// </summary>
+        public GameObject MainMenuCanvas;
+        /// <summary>
+        /// Gameobject of the audio menu
+        /// </summary>
+        public GameObject AudioMenuCanvas;
+        /// <summary>
+        /// Gameobject of how to play menu
+        /// </summary>
+        public GameObject HowToCanvas;
+        /// <summary>
+        /// Gameobject of credits canvas;
+        /// </summary>
+        public GameObject CreditsCanvas;
+        /// <summary>
+        /// Gameobject of the on click button sound
+        /// </summary>
+        public AudioSource ButtonSound;
 
-        //public GameObject playerEnemy;
-        //private GameObject activeEnemy;
-
-        //[SerializeField] private KeyItemController Collectable_1;
-
-        bool HaveNumber(out int i)
-        {
-            if (true)
-            {
-                i = 1;
-                return true;
-            }
-        }
-
-        float maxInteractionDistance = 3f;
-
-        // Update is called once per frame
-
+        /// <summary>
+        /// Sets the different menus to hidden
+        /// </summary>
         private void Start()
         {
-            Quitmenu.gameObject.SetActive(false);
-            //Dialogue.gameObject.SetActive(false);
+            QuitMenu.SetActive(false);
+            AudioMenuCanvas.SetActive(false);
+            HowToCanvas.SetActive(false);
         }
 
-        void Update()
+        /// <summary>
+        /// Spawns player on load
+        /// </summary>
+        /// <param name="prev"></param>
+        /// <param name="next"></param>
+        private void SpawnPlayerOnLoad(Scene prev, Scene next)
         {
-            Debug.DrawLine(transform.position, transform.position + (transform.forward * maxInteractionDistance));
-            RaycastHit hitInfo;
-            if (Physics.Raycast(transform.position, transform.forward, out hitInfo, maxInteractionDistance))
+            Debug.Log("Entering Scene is:" + next.buildIndex);
+
+            PlayerSpawnSpot playerSpot = FindObjectOfType<PlayerSpawnSpot>();
+            if (activePlayer == null)
             {
-                /*if (instance != null && instance != this)
-                {
-                    Destroy(playerPrefab);
-                    Destroy(playerEnemy);
-                }*/
-                if (hitInfo.transform.tag == "exit")
-                {
-                    Debug.Log("Exit");
-
-                    if (instance != null && instance != this)
-                    {
-                        Destroy(playerPrefab);
-                    }
-
-                    else
-                    {
-                        SceneManager.LoadScene(Level2);
-                        DontDestroyOnLoad(playerPrefab);
-
-                        SceneManager.activeSceneChanged += SpawnPlayerOnSceneLoad;
-
-                        instance = this;
-                    }
-                    //GetComponent<Animator>().Play("FadeToBlack");
-                    //SceneManager.LoadScene(Level2);
-
-
-                    //DontDestroyOnLoad(playerPrefab);
-                    //DontDestroyOnLoad(playerEnemy);
-                    //SceneManager.activeSceneChanged += SpawnPlayerOnSceneLoad;
-
-                    //instance = this;
-                }
-
-                else if (hitInfo.transform.tag == "entrance")
-                {
-                    Debug.Log("Entrance");
-                    SceneManager.LoadScene(Level1);
-                    SceneManager.activeSceneChanged += SpawnPlayerOnSceneLoad;
-
-                    instance = this;
-                }
-
-                /*else if (hitInfo.transform.tag == "collectible_1")
-                {
-                    Debug.Log("First");
-
-                    if (activeEnemy == null)
-                    {
-                        EnemySpawnSpot enemySpot = FindObjectOfType<EnemySpawnSpot>();
-                        GameObject newEnemy = Instantiate(playerEnemy, enemySpot.transform.position, enemySpot.transform.rotation);
-                        activeEnemy = newEnemy;
-                    }
-                }
-
-                else if (hitInfo.transform.tag == "collectible_2")
-                {
-                    Debug.Log("Second");
-
-                }
-
-                else if (hitInfo.transform.tag == "collectible_3")
-                {
-                    Debug.Log("Third");
-                }*/
-
-                else if (hitInfo.transform.tag == "teleporter")
-                {
-                    Debug.Log("Go To Level2");
-                    SceneManager.LoadScene(Level2);
-
-                    //DontDestroyOnLoad(playerPrefab);
-                    SceneManager.activeSceneChanged += SpawnPlayerOnSceneLoad;
-
-                    instance = this;
-
-                    //Collectable_1.Collectable_1 = true;
-                }
-
-                else if (hitInfo.transform.tag == "houseTeleporter")
-                {
-                    Debug.Log("Go To Level3");
-                    SceneManager.LoadScene(Level3);
-
-                    //DontDestroyOnLoad(playerPrefab);
-                    SceneManager.activeSceneChanged += SpawnPlayerOnSceneLoad;
-
-                    instance = this;
-                }
-
-                /*else if ( hitInfo.collider.gameObject.tag == "Cactus")
-                {
-                    if (HealthBar > 0)
-                    {
-                        Debug.Log("Cactus");
-                        Debug.Log(HealthBar);
-                        HealthBar -= CactusDamage;
-                        displayHealth.text = "Health Bar : " + HealthBar;
-                    }
-                    else if (HealthBar == 0)
-                    {
-                        SceneManager.LoadScene(Deathmenu);
-                    }
-                }
-
-                else if (hitInfo.transform.tag == "Enemy")
-                {
-                    if (HealthBar > 0)
-                    {
-                        Debug.Log("Enemy");
-                        Debug.Log(HealthBar);
-                        HealthBar -= 3;
-                        displayHealth.text = "Health Bar : " + HealthBar;
-                    }
-                    else if (HealthBar == 0)
-                    {
-                        SceneManager.LoadScene(Deathmenu);
-                    }
-                }*/
-
-                /*else
-                {
-                    DontDestroyOnLoad(playerPrefab);
-                    DontDestroyOnLoad(playerEnemy);
-                    instance = this; 
-                }*/
+                GameObject player = Instantiate(PlayerPrefab, playerSpot.transform.position, playerSpot.transform.rotation);
+                activePlayer = player.GetComponent<PlayerMovement>();
+            }
+            else
+            {
+                activePlayer.transform.position = playerSpot.transform.position;
+                activePlayer.transform.rotation = playerSpot.transform.rotation;
             }
         }
 
-        private void OnCollisionEnter(Collision coll)
-        {
-            if (coll.gameObject.tag == "Cactus")
-            {
-                if (HealthBar > 0)
-                {
-                    Debug.Log("Cactus");
-                    HealthBar -= CactusDamage;
-                    Debug.Log(HealthBar);
-                    displayHealth.text = "Health Bar : " + HealthBar;
-                }
-                else if (HealthBar == 0)
-                {
-                    SceneManager.LoadScene(Deathmenu);
-                }
-            }
-        }
-
-        public void Death()
-        {
-            SceneManager.LoadScene(Deathmenu);
-        }
-        public void OnStartButton()
+        /// <summary>
+        /// Checks the static instance
+        /// </summary>
+        private void Awake()
         {
             if (instance != null && instance != this)
             {
-                Destroy(playerPrefab);
-                //Destroy(playerEnemy);
+                Destroy(gameObject);
             }
             else
             {
-                SceneManager.LoadScene(Level1);
-
-                DontDestroyOnLoad(playerPrefab);
-                //DontDestroyOnLoad(playerEnemy);
-                SceneManager.activeSceneChanged += SpawnPlayerOnSceneLoad;
+                DontDestroyOnLoad(gameObject);
+                SceneManager.activeSceneChanged += SpawnPlayerOnLoad;
 
                 instance = this;
             }
-
-            /*SceneManager.LoadScene(Level1);
-            DontDestroyOnLoad(Quitmenu);*/
         }
 
-        private void SpawnPlayerOnSceneLoad(Scene currentScene, Scene nextScene)
+        /// <summary>
+        /// Click the start button and plays this function 
+        /// </summary>
+        public void OnStartButton()
         {
-            if (activePlayer == null)
-            {
-                PlayerSpawnSpot playerSpot = FindObjectOfType<PlayerSpawnSpot>();
-                GameObject newPlayer = Instantiate(playerPrefab, playerSpot.transform.position, playerSpot.transform.rotation);
-                activePlayer = newPlayer;
+            Debug.Log(PlayerPrefab.name);
 
+            ButtonSound.Play();
+            SceneManager.LoadScene(1);
+            MainMenuCanvas.gameObject.SetActive(false);
+
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
             }
             else
             {
-                return;
-                /*PlayerSpawnSpot playerSpot = FindObjectOfType<PlayerSpawnSpot>();
-                activePlayer.transform.position = playerSpot.transform.position;
-                activePlayer.transform.rotation = playerSpot.transform.rotation;*/
+                DontDestroyOnLoad(gameObject);
+                SceneManager.activeSceneChanged += SpawnPlayerOnLoad;
+
+                instance = this;
             }
         }
 
-        /*public void SpawnEnemy()
+        /// <summary>
+        /// Click the audio button and to get audio menu
+        /// </summary>
+        public void OnAudioButton()
         {
-            if (activeEnemy == null)
-            {
-                EnemySpawnSpot enemySpot = FindObjectOfType<EnemySpawnSpot>();
-                GameObject newEnemy = Instantiate(playerEnemy, enemySpot.transform.position, enemySpot.transform.rotation);
-                activeEnemy = newEnemy;
-            }
-        }*/
-
-        public void TeleportToLevelTwo()
-        {
-            /*SceneManager.LoadScene(Level2);
-            DontDestroyOnLoad(playerPrefab);
-            //DontDestroyOnLoad(playerEnemy);
-            SceneManager.activeSceneChanged += SpawnPlayerOnSceneLoad;
-
-            instance = this;*/
-            Debug.Log("Go Back To Level 2");
+            ButtonSound.Play();
+            MainMenuCanvas.gameObject.SetActive(false);
+            AudioMenuCanvas.SetActive(true);
         }
 
+        /// <summary>
+        /// Click the how to play button and to get how to play menu
+        /// </summary>
+        public void OnHowToButton()
+        {
+            ButtonSound.Play();
+            MainMenuCanvas.gameObject.SetActive(false);
+            HowToCanvas.SetActive(true);
+        }
+
+        /// <summary>
+        /// Click the credits button and to get credits menu
+        /// </summary>
+        public void OnCreditsButton()
+        {
+            ButtonSound.Play();
+            MainMenuCanvas.gameObject.SetActive(false);
+            CreditsCanvas.SetActive(true);
+        }
+
+        /// <summary>
+        /// Click the quit button and to get quit menu
+        /// </summary>
         public void OnQuitButton()
         {
-            //Application.Quit();
-            Quitmenu.gameObject.SetActive(true);
+            QuitMenu.SetActive(true);
+            ButtonSound.Play();
         }
 
+        /// <summary>
+        /// Click the yes button and to quit the game
+        /// </summary>
         public void OnYesButton()
         {
+            ButtonSound.Play();
             Application.Quit();
         }
 
+        /// <summary>
+        /// Click the no button and hides the quit menu
+        /// </summary>
         public void OnNoButton()
         {
-            Quitmenu.gameObject.SetActive(false);
+            QuitMenu.SetActive(false);
+            ButtonSound.Play();
         }
 
+        /// <summary>
+        /// Click the return button and return to main menu
+        /// </summary>
         public void OnReturnButton()
         {
-            SceneManager.LoadScene(Mainmenu);
-        }
-
-        public void OnOptionButton()
-        {
-            SceneManager.LoadScene(Optionmenu);
-        }
-
-        public void OnRestartButton()
-        {
-
-        }
-
-        public void OnSoundSlider()
-        {
-            //Sound.GetComponent<TextMeshPro>().text = SoundSlider.value;
-
-            SoundSlider.onValueChanged.AddListener((v) =>
-            {
-                Sound.text = v.ToString("0");
-            });
+            ButtonSound.Play();
+            AudioMenuCanvas.SetActive(false);
+            HowToCanvas.SetActive(false);
+            MainMenuCanvas.gameObject.SetActive(true);
         }
     }
 }
