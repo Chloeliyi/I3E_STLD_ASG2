@@ -22,3 +22,9 @@ To win the game and successfully return home, you must:
 3. Find the missing core reactor required to repair your spaceship.
 4. Return to the crashed spaceship and install the core reactor to fix it.
 5. Leave the planet.
+
+# Credits
+### Enemy codes:
+- [From Dave/GameDevelopment on YouTube](https://youtu.be/UjkSFoLxesw)
+- ### Audio Mixers/Sliders:
+- [From Rehope Games on Youtube](https://www.youtube.com/playlist?list=PLf6aEENFZ4Fv0ifncKE3T05qrI450U_aD)
