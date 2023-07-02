@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class for raycasting to pick up keys, reactor parts and gun
+/// </summary>
 namespace KeySystem
 {
     public class KeyRayCast : MonoBehaviour
