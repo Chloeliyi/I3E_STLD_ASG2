@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEditor.Audio;
+using UnityEngine.Audio;
 
 /// <summary>
 /// Controls player movement
