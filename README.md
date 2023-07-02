@@ -19,7 +19,7 @@ Crash-Landed is an immersive PC game set in space where you as the player lands 
 # Limitations and Known Bugs
 - The enemy may not be accurate at aiming at you
 - The teleporters might need to be clicked a few times to be able to unlock
-- 
+- The win game message sometimes does not show up at the end.
 # How To Win The Game
 To win the game and successfully return home, you must:
 1. Explore the crashed spaceship to gather resources and discover clues.
