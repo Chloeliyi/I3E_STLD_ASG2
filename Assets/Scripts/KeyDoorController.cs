@@ -15,12 +15,22 @@ namespace KeySystem
 
         [SerializeField] private int timeToShowUI = 1;
         [SerializeField] private GameObject showDoorLockedUI = null;
+        [SerializeField] private GameObject showRightdoorLockedUI = null;
 
         [SerializeField] private KeyInventory _keyInventory = null;
 
         [SerializeField] private int waitTimer = 1;
         [SerializeField] private bool pauseInteraction = false;
 
+        [SerializeField] private GameObject RightDoors;
+        [SerializeField] private GameObject Enemy;
+
+
+        private void Start()
+        {
+            RightDoors.SetActive(true);
+            Enemy.SetActive(false);
+        }
         private void Awake()
         {
             doorAnim = gameObject.GetComponent<Animator>();
@@ -42,6 +52,8 @@ namespace KeySystem
                     doorAnim.Play(openAnimationName, 0, 0.0f);
                     doorOpen = true;
                     StartCoroutine(PauseDoorInteraction());
+                    RightDoors.SetActive(false);
+                    Enemy.SetActive(true);
                 }
                 else if (doorOpen && !pauseInteraction)
                 {
@@ -55,11 +67,24 @@ namespace KeySystem
                 StartCoroutine(ShowDoorLocked());
             }
         }
+
+        public void RightDoorLocked()
+        {
+            StartCoroutine(ShowRightDoorLocked());
+        }
         IEnumerator ShowDoorLocked()
         {
             showDoorLockedUI.SetActive(true);
             yield return new WaitForSeconds(timeToShowUI);
             showDoorLockedUI.SetActive(false);
+        }
+
+        IEnumerator ShowRightDoorLocked()
+        {
+            showRightdoorLockedUI.SetActive(true);
+            Debug.Log("ShowRightDoorLocked");
+            yield return new WaitForSeconds(timeToShowUI);
+            showRightdoorLockedUI.SetActive(false);
         }
     }
 }
