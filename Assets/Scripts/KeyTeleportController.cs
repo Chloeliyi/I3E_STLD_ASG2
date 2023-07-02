@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class to control the teleporters
+/// </summary>
 namespace KeySystem
 {
     public class KeyTeleportController : MonoBehaviour
@@ -17,9 +20,9 @@ namespace KeySystem
 
         [SerializeField] private GameObject Teleporter = null;
 
-        [SerializeField] private KeyInventory _keyInventory = null;
+        [SerializeField] private GameObject SecondTeleporter = null;
 
-        private GameManager Level2Teleport;
+        [SerializeField] private KeyInventory _keyInventory = null;
 
         public void ShowTeleportUI()
         {
@@ -30,8 +33,6 @@ namespace KeySystem
                     teleporterOpen = true;
 
                     StartCoroutine(showTeleportUnLocked());
-
-                    Level2Teleport.TeleportToLevelTwo();
                 }
                 
                 else if (teleporterOpen)
@@ -39,15 +40,36 @@ namespace KeySystem
                     teleporterOpen = false;
                 }
             }
-            else if(_keyInventory.hasThirdKey)
+            /*else if(_keyInventory.hasThirdKey)
             {
                 if (!teleporterOpen)
                 {
                     teleporterOpen = true;
 
-                    StartCoroutine(showTeleportUnLocked());
+                    StartCoroutine(showSecondTeleportUnLocked());
+                }
 
-                    //Level2Teleport.TeleportToLevelTwo();
+                else if (teleporterOpen)
+                {
+                    teleporterOpen = false;
+                }
+            }*/
+            else
+            {
+                StartCoroutine(showTeleportLocked());
+                //StartCoroutine(showSecondTeleportLocked());
+            }
+        }
+
+        public void ShowSecondTeleportUI()
+        {
+            if(_keyInventory.hasThirdKey)
+            {
+                if (!teleporterOpen)
+                {
+                    teleporterOpen = true;
+
+                    StartCoroutine(showSecondTeleportUnLocked());
                 }
 
                 else if (teleporterOpen)
@@ -57,7 +79,7 @@ namespace KeySystem
             }
             else
             {
-                StartCoroutine(showTeleportLocked());
+                StartCoroutine(showSecondTeleportLocked());
             }
         }
 
@@ -69,6 +91,17 @@ namespace KeySystem
             showTeleporterLockedUI.SetActive(false);
             showTeleportInputLockedUI.SetActive(false);
             Teleporter.SetActive(false);
+            //SecondTeleporter.SetActive(false);
+        }
+
+        IEnumerator showSecondTeleportLocked()
+        {
+            showTeleporterLockedUI.SetActive(true);
+            showTeleportInputLockedUI.SetActive(true);
+            yield return new WaitForSeconds(timeToShowUI);
+            showTeleporterLockedUI.SetActive(false);
+            showTeleportInputLockedUI.SetActive(false);
+            SecondTeleporter.SetActive(false);
         }
 
         IEnumerator showTeleportUnLocked()
@@ -79,6 +112,17 @@ namespace KeySystem
             showTeleporterUnlockedUI.SetActive(true);
             showTeleportInputUnlockedUI.SetActive(true);
             Teleporter.SetActive(true);
+            //SecondTeleporter.SetActive(true);
+        }
+
+        IEnumerator showSecondTeleportUnLocked()
+        {
+            showTeleporterUnlockedUI.SetActive(false);
+            showTeleportInputUnlockedUI.SetActive(false);
+            yield return new WaitForSeconds(timeToShowUI);
+            showTeleporterUnlockedUI.SetActive(true);
+            showTeleportInputUnlockedUI.SetActive(true);
+            SecondTeleporter.SetActive(true);
         }
     }
 }
