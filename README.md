@@ -5,6 +5,7 @@ Crash-Landed is an immersive PC game set in space where you as the player lands 
 - **Immersive Gameplay: Dive into a rich and immersive space environment, complete with stunning visuals and atmospheric sound effects.
 - **Exploration: Traverse diverse landscapes, from the wreckage of your spaceship to ancient underground structures, as you search for clues and resources.
 - **Encounters and Challenges: Encounter intriguing alien species and overcome obstacles that stand in your way.
+# Screenshots
 # Controls
 - **Movement: W, A, S, D
 - **Jump: Spacebar
@@ -14,7 +15,9 @@ Crash-Landed is an immersive PC game set in space where you as the player lands 
 # Settings
 - Audio Volume: Adjust the volume levels for sound effects and music to your preference.
 # Limitations and Known Bugs
-
+- The enemy may not be accurate at aiming at you
+- The teleporters might need to be clicked a few times to be able to unlock
+- 
 # How To Win The Game
 To win the game and successfully return home, you must:
 1. Explore the crashed spaceship to gather resources and discover clues.
