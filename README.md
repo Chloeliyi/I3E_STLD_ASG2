@@ -18,6 +18,8 @@ Crash-Landed is an immersive PC game set in space where you as the player lands 
 - Audio Volume: Adjust the volume levels for sound effects and music to your preference.
 # Limitations and Known Bugs
 - The enemy may not be accurate at aiming at you
+- The enemy can get stuck but will still aim at you if you get close enough
+- Transition scene runs through twice (intentional because the level cannot load otherwise)
 - The teleporters might need to be clicked a few times to be able to unlock
 - The win game message sometimes does not show up at the end.
 # How To Win The Game
